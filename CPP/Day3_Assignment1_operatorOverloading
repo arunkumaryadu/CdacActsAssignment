@@ -1,0 +1,84 @@
+//============================================================================
+// Name        : Day3.cpp
+// Author      : Arun kumar
+// Copyright   : understand before copy
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include<iostream>
+using namespace std;
+
+	class Complex
+	{
+	private:
+		double _real;
+		double _imag;
+
+	public:
+		Complex():_real(0.0),_imag(0.0)
+		{
+		}
+		Complex(double real,double imag):_real(real),_imag(imag)
+		{
+		}
+		Complex(Complex & par):_real(par._real),_imag(par._imag)
+		{
+			cout<<"Copy called "<<endl;
+		}
+		Complex  operator+(Complex const & par)
+		{
+			Complex res;
+			res=Complex(this->_real+par._real,this->_imag+par._imag);
+			return res;
+		}
+		Complex  operator+(const int par)
+		{
+			Complex res;
+			res=Complex(this->_real,this->_imag+par);
+			return res;
+		}
+		friend ostream & operator<<(ostream & os,Complex & comp)
+		{
+			os<<comp._real<<(comp._imag>=0?"+":"")<<comp._imag<<"i"<<endl;
+			return os;
+		}
+		friend Complex  operator+(int const par, Complex const & cpar)
+		{
+			Complex res;
+			res=Complex(cpar._real+par,cpar._imag);
+			return res;
+		}
+		Complex& operator=(double value)
+		{
+			this->_real=this->_imag=value;
+			return *this;
+		}
+		operator double()
+		{
+			return this->_real+this->_imag;
+		}
+	};
+
+
+
+
+int main()
+{
+
+	Complex c1(12.34,11.23);
+	Complex c2(10.22,15.46);
+	Complex c3,c4,c5;
+	c3=c1+c2;
+	cout<<c1;
+	cout<<c2;
+	cout<<"________________"<<endl;
+	cout<<c3;
+	cout<<"________________"<<endl;
+    c4=c1+10;//10 to be added to the imaginary
+	c5=10+c2;//10 to be added to the real
+	c3=123.45;//this value to assigned to real and imag
+	double magnitude=c5;//magnitude should accept real+imag
+	cout<<c4<<c5<<c3<<magnitude<<endl;
+	return 0;
+
+}
