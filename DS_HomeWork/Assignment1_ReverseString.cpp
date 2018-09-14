@@ -1,5 +1,3 @@
-/*
-
 
 #include<iostream>
 #include<string>
@@ -69,7 +67,3 @@ j++;
 st.WordRev();
 return 0;
 }
-
-
-
-*/
