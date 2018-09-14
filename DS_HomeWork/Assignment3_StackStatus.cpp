@@ -1,6 +1,3 @@
-/*
-
-
 #include<iostream>
 using namespace std;
 class StackException :public exception
@@ -175,7 +172,3 @@ cout << exp.what() << endl;
 
 }
 }
-
-
-
-*/
