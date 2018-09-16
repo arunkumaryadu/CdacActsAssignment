@@ -1,6 +1,6 @@
 /* C++ implementation to convert infix expression to postfix*/
-// Note that here we use std::stack  for Stack operations
-#include<bits/stdc++.h>
+#include<iostream>
+#include<stack>
 using namespace std;
 class InToPost {
 private:
