@@ -1,13 +1,12 @@
 #include<iostream>
+#include<stdlib.h>
 using namespace std;
 struct MyStruct {
 	int data;
 	MyStruct *next;
 };
-class Queue {
-	MyStruct *head, *tail;
-	static int count;
-	int choice;
+class SinglyLinkList {
+	MyStruct *head;
 	MyStruct *CreateNode(int val) {
 		MyStruct *temp = new MyStruct();
 		temp->data = val;
@@ -15,75 +14,67 @@ class Queue {
 		return temp;
 	}
 public:
-	Queue() :
-			head(NULL), tail(NULL), choice(0) {
+	SinglyLinkList() :
+			head(NULL){
 	}
 
 	void menu() {
-		int pos, val;
+		 int choice, pos, val;
 		cout<<"\n==================================================================="<<endl;
 		cout << "Please Enter Your choice" << endl;
-		cout << "1->Push at start\n2->Push At last\n3->Push At given position"
-				<< endl;
-		cout
-				<< "4->Delete From Start\n5->Delete From Last\n6->Delete from Given Position"
-				<< endl;
+		cout << "1->Push at start\n2->Push At last\n3->Push At given position"<< endl;
+		cout<< "4->Delete From Start\n5->Delete From Last\n6->Delete from Given Position"<< endl;
 		cout << "7->Reverse List\n8->Show List\n9->Show total nodes\n10->Exit" << endl;
 		cin >> choice;
 		cout<<"\n==================================================================="<<endl;
-
 		switch (choice) {
 		case 1:
 			cout << "Enter a value to be Pushed ..." << endl;
 			cin >> val;
-			EnquePos(val, 1);
+			EnquePos(val, 0);
 			cout<<val<<" is pushed At First"<<endl;
 			break;
-
-		case 2:
+      case 2:
 			cout << "Enter a value to be Pushed ..." << endl;
 			cin >> val;
-			EnquePos(val, count + 1);
+			EnquePos(val, totalnode());
 			cout<<val<<" is pushed At last"<<endl;
 			break;
 		case 3:
 			cout << "Enter the Position Where Value to be pushed.." << endl;
 			cin >> pos;
-			if (pos == 0 || !(pos <= count + 1)) {
-				cout << "position should be greater than 0 And Less than "
-						<< count + 2<<endl;
+			if (pos < 0 || !(pos <= totalnode())) {
+				cout << "position should be Equal to 0 And Less than "<< totalnode() + 1<<endl;
 			} else {
 				cout << "Enter a value to be Pushed ..." << endl;
 				cin >> val;
 				EnquePos(val, pos);
+				cout<<val<<" is pushed At "<<pos<<endl;
 			}
-			cout<<val<<" is pushed At "<<pos<<endl;
 			break;
 		case 4:
-			if (count == 0)
+			if (IsEmpty())
 				cout << "UnderFlow" << endl;
 			else
-				cout<<DequePos(1)<<" is pop At first position "<<endl;
+				cout<<DequePos(0)<<" is pop At first position "<<endl;
 			break;
 		case 5:
-			if (count == 0)
+			if (IsEmpty())
 				cout << "UnderFlow" << endl;
 			else
-				cout<<DequePos(count)<<" is pop at last position "<<endl;
+				cout<<DequePos(totalnode())<<" is pop at last position "<<endl;
 			break;
 		case 6:
-			if (count == 0)
+			if (IsEmpty())
 				cout << "UnderFlow" << endl;
 			else {
 				int pos;
 				cout << "Enter the position " << endl;
 				cin >> pos;
-				if (pos<=0 && pos>count) {
-					cout<<"Position should be greater than 0 and less than "<<count+1<<endl;
-				} else {
-
-					   cout<<DequePos(pos)<<" is pop at position"<<pos<<"\n";
-			  }
+				if (pos<0 && pos>totalnode())
+					cout<<"Position should be equal to 0 and less than "<<totalnode()<<endl;
+				else
+					cout<<DequePos(pos)<<" is pop at position"<<pos<<"\n";
 			}
 			break;
 		case 7:
@@ -93,10 +84,15 @@ public:
 			List();
 			break;
 		case 9:
-			cout << "Total Number of nodes is "<<count << endl;
+			cout << "Total Number of nodes is "<<totalnode() << endl;
 			break;
 		case 10:
-			break;
+			cout<<"******************************************"<<endl;
+					while (totalnode()!=0) {
+						cout<<DequePos(0)<<"   ";
+					}
+					cout<<"\n******************************************"<<endl;
+			exit(0);
 		default:
 			cout << "\nPlease Enter Valid Choice" << endl;
 			break;
@@ -107,56 +103,53 @@ public:
 
 	}
 	void EnquePos(int val, int pos) {
-		count++;
+
 		MyStruct *temp = CreateNode(val);
-		if (IsEmpty() && pos == 1) {
+		if (IsEmpty()) {
 			head = temp;
-			tail = temp;
-		} else if (pos == 1) {
+		} else if (pos == 0) {
 			temp->next = head;
 			head = temp;
-		} else if (pos == 2) {
-			temp->next = head->next;
-			head->next = temp;
-		} else {
-			MyStruct *trav = head;
-			for (int i = 0; i < (pos - 2); i++) {
-				trav = trav->next;
-			}
-			temp->next = trav->next;
-			trav->next = temp;
-		}
 	}
+		 else {
+			MyStruct *trav = head;
+			int i=1;
+			while(trav!=NULL){
+				if(i==pos){
+					temp->next = trav->next;
+					trav->next = temp;
+						break;
+			}
+				trav = trav->next;
+			    i++;
+		}
+	}}
 	int DequePos(int pos) {
 		int val = -1;
 			MyStruct *temp = head;
-			 if (count == 1 && pos == 1) {
+			 if (totalnode() == 1 && pos == 0) {
 				val = head->data;
 				head = NULL;
-				tail = NULL;
-			} else if (pos == 1) {
+				delete temp;
+			} else if (pos == 0) {
 				val = head->data;
 				head = head->next;
 				delete temp;
 			} else {
 				MyStruct *trav = head;
-				for (int i = 0; i < (pos - 2); i++) {
-					trav = trav->next;
-				}
+				for (int i = 0; i < (pos - 2); i++,trav = trav->next);
 				val = trav->next->data;
-				temp = trav;
-				trav = trav->next;
-				temp->next = trav->next;
-				delete trav;
+				temp = trav->next;
+				trav->next=temp->next;
+				delete temp;
 			}
-		count--;
 		return val;
 	}
 	bool IsEmpty() {
 		return head == NULL;
 	}
 	void List() {
-		if (count == 0) {
+		if (IsEmpty()) {
 			cout << "List is empty" << endl;
 		} else {
 			for (MyStruct *trav = head; trav != NULL; trav = trav->next) {
@@ -165,12 +158,12 @@ public:
 		}
 		}
 	void LinkListRev(){
-		if(count==0){
-			cout<<"List is empty!!"<<endl;
+		if(IsEmpty() || head->next==NULL){
+			cout<<"List is empty Or List have only one element !!"<<endl;
 		}else{
 			MyStruct *newHead=NULL;
-					MyStruct *newTail=NULL;
 					MyStruct *newTrav=head;
+					MyStruct *newTail=head;
 			       while(newTrav!=NULL){
 			    	   newTail=newTrav->next;
 			    	   newTrav->next=newHead;
@@ -180,17 +173,24 @@ public:
 			       head=newHead;
 		}
 	}
-	~Queue() {
+	int totalnode(){
+		int i=0;
+		if(!IsEmpty()){
+			for (MyStruct *trav = head; trav != NULL; ++i,trav = trav->next);
+		}
+		return i;
+	}
+	~SinglyLinkList() {
 		cout<<"******************************************"<<endl;
-		while (count!=0) {
-			cout<<DequePos(count)<<"   ";
+		while (!IsEmpty()) {
+			cout<<DequePos(1)<<"   ";
 		}
 		cout<<"\n******************************************"<<endl;
 	}
 };
-int Queue::count = 0;
+
 int main() {
-	Queue q;
+	SinglyLinkList q;
 	q.menu();
 	return 0;
 }
