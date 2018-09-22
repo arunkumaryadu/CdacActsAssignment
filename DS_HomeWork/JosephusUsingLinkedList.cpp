@@ -7,7 +7,6 @@ struct MyStruct {
 };
 class Queue {
 	MyStruct *head, *tail;
-	
 	MyStruct *CreateNode(string val) {
 		MyStruct *temp = new MyStruct();
 		temp->data = val;
@@ -16,25 +15,20 @@ class Queue {
 	}
 public:
 	Queue() :
-		head(NULL), tail(NULL){
+		head(NULL), tail(NULL) {
 	}
-
-	void menu() {	
+	void menu() {
 		int choice;
 		string val, pos;
-		cout << "\n==================================================================="<<endl;
+		cout << "\n===================================================================" << endl;
 		cout << "Please Enter Your choice" << endl;
-		cout<<"1->Push Data\n2->Josephus\n3->Show List\n4->Show total nodes\n5->Exit"<<endl;
+		cout << "1->Push Data\n2->Josephus\n3->Show List\n4->Show total nodes\n5->Exit" << endl;
 		cin >> choice;
-		fflush(stdin);
-		cout <<"\n==================================================================="<<endl;
-		fflush(stdout);
-
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "\n===================================================================" << endl;
 		switch (choice) {
 		case 1:
-			fflush(stdout);
 			cout << "Enter a value to be Pushed ..." << endl;
-			fflush(stdout);
 			getline(cin, val);
 			EnquePos(val);
 			break;
@@ -47,8 +41,8 @@ public:
 				cin >> pos;
 				cout << "Enter the random value for counting " << endl;
 				cin >> ran;
-				cout << josephus(pos, ran) << " is pop at position" << pos << "\n";
-				}
+				cout << josephus(pos, ran) << " is Alive \n";
+			}
 			break;
 		case 3:
 			List();
@@ -57,7 +51,7 @@ public:
 			cout << "Total Number of nodes is " << totalNode() << endl;
 			break;
 		case 5:
-			break;
+			exit(0);
 		default:
 			cout << "\nPlease Enter Valid Choice" << endl;
 			break;
@@ -65,7 +59,6 @@ public:
 		while (choice != 5) {
 			menu();
 		}
-
 	}
 	void EnquePos(string val) {
 		MyStruct *temp = CreateNode(val);
@@ -73,50 +66,85 @@ public:
 			head = temp;
 			tail = temp;
 		}
-		else{
+		else {
 			temp->next = head;
 			head = temp;
 			tail->next = temp;
 		}
 	}
-	
+
 	string josephus(string jpos, int ran) {
-		if (head == tail)
+		if (head == tail || totalNode()==1) {
+			cout << "1";
 			return head->data;
-		else {			
-			MyStruct *jtrav;
-			for (jtrav = head; jtrav->data!=jpos;jtrav = jtrav->next);
-			for (int i = 1; i < ran; i++, jtrav = jtrav->next);	
+		}
+		else {
+			if (SearchList(jpos)) {
+				cout << "2";
+				MyStruct *jtrav;
+				int i = 1;
+				for (jtrav = head; jtrav->data != jpos; jtrav = jtrav->next);
+				cout << jtrav->data;
+				for (int i = 1; i < ran; i++, jtrav = jtrav->next);
+				cout << jtrav->data;
 				MyStruct *ptr1 = jtrav->next;
 				jtrav->next = ptr1->next;
-				delete ptr1;			
-			return josephus(jtrav->data,ran);
-		}		
+				cout << ptr1->data;
+				if (ptr1 == head)
+					head = ptr1->next;
+				if (ptr1 == tail)
+					tail = jtrav;
+				delete ptr1;
+				List();				
+				return this->josephus(jtrav->data, ran);
+			}
+			else {
+				string err = jpos + " Is not on list";
+				return err;
+			}
+		}
 	}
 
+	bool SearchList(string val) {
+		MyStruct *ptr1;
+		bool IsOnQueue = false;
+		for (ptr1 = head; ptr1 != tail; ptr1 = ptr1->next) {
+			if (val == ptr1->data) {
+				IsOnQueue = true;
+			}
+
+		}
+		if (val == tail->data) {
+			IsOnQueue = true;
+		}
+
+		return IsOnQueue;
+	}
 	int totalNode() {
 		if (IsEmpty())
 			return 0;
 		else {
-			int i=1;
+			int i = 0;
 			for (MyStruct *trav = head; trav != tail; trav = trav->next, i++);
-			return i+1;
+			return i + 1;
 		}
-			
+
 	}
-	
+
 	bool IsEmpty() {
 		return head == NULL;
 	}
-	
+
 	void List() {
 		if (head == NULL) {
 			cout << "List is empty" << endl;
 		}
 		else {
-			for (MyStruct *trav = head; trav != tail; trav = trav->next) {
+			MyStruct *trav;
+			for (trav = head; trav != tail; trav = trav->next) {
 				cout << trav->data << "\t \t";
 			}
+			cout << trav->data << endl;
 		}
 	}
 
@@ -127,7 +155,7 @@ public:
 			temp = head;
 			head = head->next;
 			cout << temp->data << "   ";
-			delete temp;		
+			delete temp;
 		}
 		cout << "\n******************************************" << endl;
 	}
