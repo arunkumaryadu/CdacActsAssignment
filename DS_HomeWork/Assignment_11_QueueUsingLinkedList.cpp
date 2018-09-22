@@ -1,4 +1,5 @@
 #include<iostream>
+#include<stdlib.h>
 using namespace std;
 struct MyStruct {
 	int data;
@@ -6,8 +7,6 @@ struct MyStruct {
 };
 class Queue {
 	MyStruct *head, *tail;
-	static int count;
-	int choice;
 	MyStruct *CreateNode(int val) {
 		MyStruct *temp = new MyStruct();
 		temp->data = val;
@@ -16,41 +15,45 @@ class Queue {
 	}
 public:
 	Queue() :
-		head(NULL), tail(NULL), choice(0) {
+			head(NULL), tail(NULL) {
 	}
 
 	void menu() {
-
-		int pos, val;
-		cout << "\n==================================================================="<< endl;
+		int choice;
+		int val;
+		cout<<"\n===================================================="<< endl;
 		cout << "Please Enter Your choice" << endl;
-		cout << "1->EnQueue\n";			
-		cout << "2->DeQueue\n";
-		cout << "3->Show List\n4->Show total nodes\n5->Exit"<< endl;
+		cout << "1->Enque\n";
+		cout << "2->Deque\n";
+		cout << "3->Show List\n4->Show total nodes\n5->Exit" << endl;
 		cin >> choice;
-		cout << "\n==================================================================="<< endl;
+		cout<<"\n====================================================="<< endl;
+
 		switch (choice) {
 		case 1:
 			cout << "Enter a value to be Pushed ..." << endl;
 			cin >> val;
-			EnquePos(val, 1);			
+			Enque(val);
 			cout << val << " is pushed At First" << endl;
 			break;
 		case 2:
-			if (count == 0)
+			if (IsEmpty())
 				cout << "UnderFlow" << endl;
-			else {
-				cout << DequePos(count) << " is pop at "<<count<<" position " << endl;			
-			}				
+			else
+				cout << Deque() << " is poped " << endl;
 			break;
 		case 3:
 			List();
 			break;
 		case 4:
-			cout << "Total Number of nodes is " << count << endl;
+			cout << "Total Number of nodes is " << totalnode() << endl;
 			break;
 		case 5:
-				break;
+			while(!IsEmpty()){
+						cout <<Deque() << "   ";
+					}
+
+			exit(0);
 		default:
 			cout << "\nPlease Enter Valid Choice" << endl;
 			break;
@@ -59,80 +62,68 @@ public:
 			menu();
 		}
 	}
-	void EnquePos(int val, int pos) {
+	void Enque(int val) {
 		MyStruct *temp = CreateNode(val);
-		if (IsEmpty() && pos == 1) {
-			head = temp;
-			tail = temp;
-		}
-		else if (pos == 1) {
+		if (!IsEmpty())
 			temp->next = head;
-			head = temp;
-			tail->next = temp;
-		}
-		else if (pos == 2) {
-			temp->next = head->next;
-			head->next = temp;
-		}
-		else {
-			MyStruct *trav = head;
-			for (int i = 0; i < (pos - 2); i++) {
-				trav = trav->next;
-			}
-			temp->next = trav->next;
-			trav->next = temp;
-		}
-		count++;
+		else
+			tail = temp;
+		head = temp;
 	}
-	int DequePos(int pos) {
-		int val = -1;
-		MyStruct *temp = head;
-		if (count == 1 && pos == 1) {
+	int Deque() {
+
+		int val=0;
+		if (head == tail) {
+			MyStruct *temp=head;
 			val = head->data;
-			//cout << head << "  " << tail << endl;
+			head=NULL;
 			tail = NULL;
-			delete head;
-			count--;
+			delete temp;
+
+		} else {
+			MyStruct *trav, *temp;
+			for (trav = head; trav->next != tail; trav = trav->next);
+			val = tail->data;
+			temp = tail;
+			tail = trav;
+			delete temp;
 		}
-		else {
-			MyStruct *trav = head;
-			for (int i = 0; i < (pos - 2); i++) {
-				trav = trav->next;
-			}
-			val = trav->next->data;
-			temp = trav;
-			trav = trav->next;
-			temp->next = trav->next;
-			delete trav;
-			count--;
-		}
-		
 		return val;
 	}
 	bool IsEmpty() {
 		return head == NULL;
 	}
+	int totalnode() {
+		if (!IsEmpty()) {
+			int i = 0;
+			MyStruct *trav;
+			for (trav = head; trav != tail; i = i + 1, trav = trav->next)
+				;
+			return i + 1;
+		} else
+			return 0;
+
+	}
 	void List() {
-		if (count == 0) {
+		if (!IsEmpty()) {
+			for (MyStruct *trav = head; trav != tail; trav = trav->next)
+				cout << trav->data << " \t";
+			cout << tail->data << endl;
+		}
+
+		else
 			cout << "List is empty" << endl;
-		}
-		else {
-			int i = 1;
-			for (MyStruct *trav = head; i != count + 1; trav = trav->next) {
-				cout << "(" << i << ")" << trav->data << "\t \t";
-				i++;
-			}
-		}
 	}
 	~Queue() {
 		cout << "******************************************" << endl;
-		while (count != 0) {
-			cout << DequePos(count) << "   ";
+		while(!IsEmpty()){
+			cout <<Deque() << "   ";
 		}
+
 		cout << "\n******************************************" << endl;
 	}
 };
-int Queue::count = 0;
+
 int main() {
 	Queue q;
 	q.menu();
