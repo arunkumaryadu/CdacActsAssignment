@@ -6,6 +6,7 @@ struct MyStruct {
 	MyStruct *next;
 };
 class Queue {
+	
 	MyStruct *head, *tail;
 	MyStruct *CreateNode(string val) {
 		MyStruct *temp = new MyStruct();
