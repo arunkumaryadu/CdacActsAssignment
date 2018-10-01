@@ -28,3 +28,10 @@ select round(avg(population)-0.5,0) from city;
 select sum(population) from CITY where COUNTRYCODE='JPN';
 
 
+/* Weather Observation Station 4 */
+select ((select count(*) from station)-(select count(distinct city) from station)) ;
+                                        
+                                      /* Weather Observation Station 5 */
+
+select CITY, length(CITY)from station order by length(CITY), city limit 1;
+select CITY, length(CITY)from station order by length(CITY) desc, city limit 1; `
