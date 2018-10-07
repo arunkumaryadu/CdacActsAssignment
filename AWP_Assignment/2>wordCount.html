@@ -18,18 +18,16 @@
 function wordCount() {
   var string=document.getElementById("txt1").value;
     var wordsArray = string.split(" ");
-    var res=[];
+
     wordsArray.sort();
     var count=1;
-    var resIndex=0;
     var finalResult="";
+
     for(var i=0;i<wordsArray.length;i++){
        if(wordsArray[i]==wordsArray[i+1]){
          count++;
        }else{
          finalResult = finalResult + wordsArray[i] + "  " + count + "<br>";
-         res[resIndex++]=wordsArray[i];
-         res[resIndex++]=count;
          count=1;
        }
     }
