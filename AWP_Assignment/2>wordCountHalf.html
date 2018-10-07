@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>wordCount</title>
+</head>
+
+<body>
+<form>
+  <input type="text" id="txt1" name="txto" onfocus="this.value=''" />
+  <input type="button" id="btn1" name="btno" value="Count Words" onclick="wordCount()"/><br/>
+  <span id="spn1"></span>
+</form>
+
+
+<!-- JS function to count words -->
+<script type="text/javascript">
+function wordCount() {
+  var string=document.getElementById("txt1").value;
+    var wordsArray = string.split(" ");
+  var wordsMap = {};
+
+  wordsArray.forEach(function (key) {
+    if (wordsMap.hasOwnProperty(key)) {
+      wordsMap[key]++;
+    } else {
+      wordsMap[key] = 1;
+    }
+  });
+
+  var finalWordsArray = [];
+  finalWordsArray = Object.keys(wordsMap).map(function (key) {
+    return {
+      name: key,
+      total: wordsMap[key]
+    };
+  });
+
+
+var falen=finalWordsArray.length;
+  for(var i=0;i<falen;i++){
+    alert('The word "' + finalWordsArray[i].name + '" appears the most in the file ' +
+      finalWordsArray[i].total + ' times');
+  }
+
+}
+</script>
+
+</body>
+</html>
