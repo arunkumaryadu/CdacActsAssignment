@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>Prime Or Not</title>
+</head>
+
+<body>
+<form>
+  <input type="text" id="txt1" name="txto" onfocus="this.value=''" />  <span id="spn1"></span><br/>
+  <span id="spn2"></span><br/>
+  <input type="button" id="btn1" name="btno" value="checkPrime" onclick="printPrime()"/>
+</form>
+
+
+<!-- JS function to print according to given situation -->
+<script type="text/javascript">
+function printPrime() {
+  var x=document.getElementById("txt1");
+  var spn1=document.getElementById("spn1");
+  var spn2=document.getElementById("spn2");
+  if(x.value==2){
+    spn2.innerHTML="Horrible Prime !!!";
+    spn1.innerHTML="";
+  }
+  else if (x.value==1) {
+    spn1.innerHTML="Good Prime Number !!!";
+    spn2.innerHTML="";
+
+  }
+  else{
+    var y=checkPrime(x.value);
+    if(y==1){
+      spn1.innerHTML="Good Prime Number !!!";
+      spn2.innerHTML="";
+    }
+    else{
+      document.getElementById("txt1").value=" Type only prime number !!!";
+      spn2.innerHTML="";
+      spn1.innerHTML="";
+    }
+  }
+}
+//  JS function to check prime or not
+function checkPrime(x) {
+  var count=0;
+  for(var i=2;i<=x;i++){
+    if(x%i==0){
+      ++count;
+    }
+  }
+  return count;
+}
+</script>
+
+</body>
+</html>
