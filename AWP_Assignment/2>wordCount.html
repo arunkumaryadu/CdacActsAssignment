@@ -18,31 +18,22 @@
 function wordCount() {
   var string=document.getElementById("txt1").value;
     var wordsArray = string.split(" ");
-  var wordsMap = {};
-
-  wordsArray.forEach(function (key) {
-    if (wordsMap.hasOwnProperty(key)) {
-      wordsMap[key]++;
-    } else {
-      wordsMap[key] = 1;
+    var res=[];
+    wordsArray.sort();
+    var count=1;
+    var resIndex=0;
+    var finalResult="";
+    for(var i=0;i<wordsArray.length;i++){
+       if(wordsArray[i]==wordsArray[i+1]){
+         count++;
+       }else{
+         finalResult = finalResult + wordsArray[i] + "  " + count + "<br>";
+         res[resIndex++]=wordsArray[i];
+         res[resIndex++]=count;
+         count=1;
+       }
     }
-  });
-
-  var finalWordsArray = [];
-  finalWordsArray = Object.keys(wordsMap).map(function (key) {
-    return {
-      name: key,
-      total: wordsMap[key]
-    };
-  });
-
-
-var falen=finalWordsArray.length;
-  for(var i=0;i<falen;i++){
-    alert('The word "' + finalWordsArray[i].name + '" appears the most in the file ' +
-      finalWordsArray[i].total + ' times');
-  }
-
+document.getElementById("spn1").innerHTML=finalResult;
 }
 </script>
 
