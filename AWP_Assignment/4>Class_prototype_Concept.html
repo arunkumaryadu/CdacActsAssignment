@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      window.onload=function(){
+  // Base Class
+        function Item(){
+          this.itemno=0;
+          this.price=0;
+          this.setItemDetails=function(itemno,price){
+            this.itemno=itemno;
+            this.price=price;
+          }
+          this.getItemDetails=function(){
+              document.write("itemno = "+this.itemno+"  "+"price = "+this.price+"<br>");
+
+          }
+        }
+
+
+        // derived class
+
+        function DiscountedItem(){
+          this.discount=0;
+          this.setDiscount=function(discount){
+            this.discount=discount;
+          }
+          this.getDiscount=function(){
+              document.write("discount = "+this.discount+"<br>");
+          }
+        }
+
+// Creating base class object and calling thier function by base class object
+
+document.write("<h4>Creating base class object and calling thier function by base class object</h4>");
+        var x =new Item();
+        var y =new Item();
+        x.setItemDetails(1,500);
+        y.setItemDetails(2,300);
+        x.getItemDetails();
+        y.getItemDetails();
+
+        // Creating derived class object and calling thier function by derived class object
+        document.write("<h4>Creating derived class object and calling thier function by derived class object</h4>");
+
+
+var x =new DiscountedItem();
+var y =new DiscountedItem();
+x.setDiscount(10);
+y.setDiscount(20);
+x.getDiscount();
+y.getDiscount();
+
+
+var z =new DiscountedItem();
+//z.setItemDetails(3,1000);        // Error
+//z.getItemDetails();              //Error
+
+
+//Creating derived class object and calling base function by derived class object
+document.write("<h4>Creating derived class object and calling base function by derived class object</h4>");
+
+
+DiscountedItem.prototype =new Item();
+var w =new DiscountedItem();
+
+w.setItemDetails(3,1000);
+w.getItemDetails();
+
+}
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
