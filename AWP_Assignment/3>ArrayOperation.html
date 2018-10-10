@@ -1,0 +1,136 @@
+<html>
+<head>
+<title> Array </title>
+<style>
+
+table tr th{
+  width: 600px;
+  text-align: center;
+}
+table tr td{
+  height: 100px;
+  width: 600px;
+}
+
+</style>
+<script>
+window.onload=function(){
+var vbtn1=document.getElementById("btn1");
+var vbtn2=document.getElementById("btn2");
+var vbtn3=document.getElementById("btn3");
+var vbtn4=document.getElementById("btn4");
+var vbtn5=document.getElementById("btn5");
+
+var arr=[];
+var actualArr="";
+
+
+// function which generate random number
+function getRandomNumber(min,max){
+return Math.floor(Math.random()*(max-min))+min;
+}
+
+// push values to an Array
+for(var i=0;i<100;i++){
+  var x=getRandomNumber(10,50);
+arr.push(x);
+actualArr=actualArr+x+"  ";
+}
+
+//print all Array Elements
+vbtn4.onclick=function PrintAllArrayEle(){
+document.getElementById("spn1").innerHTML=actualArr;
+}
+
+// print Array Elements in sorted order
+vbtn5.onclick=function PrinSortedArrayEle(){
+  arr.sort();
+document.getElementById("spn2").innerHTML=arr.join("  ");
+}
+
+// print unique Elements of Array
+vbtn1.onclick=function PrintUniqueArrayEle(){
+  arr.sort();
+var uniqueArray=[];
+var count=1;
+for(var i=0;i<100;i++){
+if(arr[i]!=arr[i+1]){
+if(count<=1){
+uniqueArray.push(arr[i]);
+}count=1;
+}
+else{
+count++;
+}
+}
+document.getElementById("spn3").innerHTML=uniqueArray.join("  ");
+}
+
+// print Elements which are exist atmost 3 times on Array
+vbtn2.onclick=function removeMoreThan3(){
+  arr.sort();
+  var threeTimes=[];
+var count=1;
+for(var i=0;i<100;i++){
+if(arr[i]!=arr[i+1]){
+if(count<=3){
+threeTimes.push(arr[i]);
+}count=1;
+}
+else{
+count++;
+}
+}
+document.getElementById("spn4").innerHTML=threeTimes.join("  ");
+}
+
+vbtn3.onclick=function secondSmallesEle(){
+  arr.sort();
+for(var i=0;i<100;i++){
+if(arr[i]!=arr[i+1]){
+  document.getElementById("spn5").innerHTML=arr[i+1]+" is second Smallest Element";
+  break;
+}
+}
+}
+
+}
+
+
+
+
+</script>
+
+</head>
+<body>
+<table border="1px">
+<tr>
+  <th>All Elements <input type="button" value="Click Me" id="btn4"/></th>
+  <th>All Elements In sorted order <input type="button" value="Click Me" id="btn5"/>
+</th>
+</tr>
+<tr>
+  <td ><span id="spn1"></span></td>
+  <td ><span id="spn2"></span></td>
+</tr>
+<tr>
+  <th>Unique Elements<input type="button" value="Click Me" id="btn1" /></th>
+  <th>Elements Which are present atmost 3 times<input type="button" value="Click Me" id="btn2"/>
+</th>
+</tr>
+<tr>
+  <td><span id="spn3"></span></td>
+  <td><span id="spn4"></span>
+</td>
+</tr>
+<tr>
+  <td>Second Smallest Element <input type="button" value="Click Me" id="btn3"/></td>
+  <td><span id="spn5"></span></td>
+</tr>
+
+</table>
+
+
+
+</body>
+</html>
