@@ -1,0 +1,11 @@
+<!DOCTYPE vehicles SYSTEM "vehicles.dtd">
+<vehicles>
+<vehicle rid="">
+<year>1996</year>
+<make>1998</make>
+</vehicle>
+<vehicle rid="">
+<year>1996</year>
+<make>1998</make>
+</vehicle>
+</vehicles>

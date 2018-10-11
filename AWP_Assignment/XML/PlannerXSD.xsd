@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:element name="planner">
+<xs:complexType mixed="true">  
+<xs:sequence> 
+<xs:element name="tasks" maxOccurs="3">
+<xs:complexType mixed="true">
+<xs:attribute name="date" type="xs:string"/>
+<xs:attribute name="time" type="xs:string" use="optional" />
+
+</xs:complexType>
+
+</xs:element> 
+<xs:element name="OWNER">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="FN" type="xs:string"></xs:element>
+<xs:element name="LN" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>   
+<xs:element name="email" type="xs:string"></xs:element>
+</xs:sequence>  
+<xs:attribute name="year" type="xs:string"/>
+
+</xs:complexType>
+</xs:element>
+</xs:schema>

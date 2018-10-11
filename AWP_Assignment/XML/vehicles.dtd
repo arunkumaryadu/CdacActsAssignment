@@ -1,0 +1,7 @@
+<!ELEMENT vehicles (vehicle+)>
+
+<!ELEMENT vehicle (year,make)>
+<!ATTLIST vehicle
+	rid CDATA #REQUIRED>
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT make (#PCDATA)>

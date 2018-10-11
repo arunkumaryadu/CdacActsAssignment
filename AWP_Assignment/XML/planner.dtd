@@ -1,0 +1,10 @@
+<!ELEMENT planner (tasks+,OWNER,email)>
+<!ELEMENT tasks EMPTY>
+<!ELEMENT OWNER (FN,LN)>
+<!ELEMENT FN (#PCDATA)>
+<!ELEMENT LN (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ATTLIST planner year CDATA #REQUIRED >
+<!ATTLIST tasks date CDATA #REQUIRED 
+                time CDATA #IMPLIED >
+
