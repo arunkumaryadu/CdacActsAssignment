@@ -1,0 +1,10 @@
+<!DOCTYPE  planner  SYSTEM  "planner.dtd">
+<planner year="" >
+	<tasks date="" />
+	<tasks date="" time=""/>
+	<OWNER>
+		<FN> A </FN>
+		<LN> B</LN>
+	</OWNER>
+	<email > scrap@junk.com </email>  
+</planner>
