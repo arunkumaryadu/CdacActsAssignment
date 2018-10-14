@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>wordCount</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(function(){
+  $("#btn1").click(function() {
+      var wordsArray = $("#txt1").val().split(" ");
+      wordsArray.sort();
+      var count=1;
+      var finalResult="";
+      for(var i=0;i<wordsArray.length;i++){
+         if(wordsArray[i]==wordsArray[i+1]){
+           count++;
+         }else{
+           finalResult = finalResult + wordsArray[i] + "  " + count + "<br>";
+           count=1;
+         }
+      }
+      $("#spn1").html(finalResult);
+});
+});</script>
+</head>
+<body>
+<form>
+  <input type="text" id="txt1" onfocus="this.value=''" placeholder="please enter a string "/>
+  <input type="button" id="btn1" value="Count Words"/><br/>
+  <span id="spn1"></span>
+</form>
+</body>
+</html>
