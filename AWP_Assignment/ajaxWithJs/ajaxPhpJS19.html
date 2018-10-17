@@ -1,0 +1,59 @@
+<html>
+<script>
+window.onload=function()
+{
+	var a;
+	document.getElementById("txt1").onblur=function()
+	{			
+	var datagiventoServer =document.getElementById("txt1").value;
+	var ssn ="aj1.php?deptid="+datagiventoServer;
+	a = new XMLHttpRequest();
+	a.onreadystatechange=afterServercompletedTheJob;
+	
+	a.open("GET", ssn, true);
+	a.send();//call to theserver.
+	//we shold after this line f1 is not getElementById called immediately
+	}
+		function afterServercompletedTheJob()
+		{
+		if(this.readyState==4) // server completed //the job
+		{
+		if(this.status == 200)  //successfully
+		{
+			var dgotfromServer = this.responseText;
+			alert(dgotfromServer);
+			var x = JSON.parse(dgotfromServer);
+			if( x.status){
+				var z = document.getElementById("content");
+				for(var a =0;a < x.empids.length; a++)
+				{
+				z.innerHTML+=x.empids[a];				
+				}
+				z = document.getElementById("em");
+				z.innerHTML="";			
+			}
+			else
+			{
+			var z = document.getElementById("em");
+			z.innerHTML="deptid is not found";
+			z = document.getElementById("content");
+			z.innerHTML="";
+			}
+			}
+			}
+		}
+}//end of onload event function.
+</script>
+
+<style>
+</style>
+<body>
+
+<input type="text" id="txt1" name="empno"/> 
+
+<span id="em"> </span>
+<div id="content">
+	may be contents
+</div>
+</body>
+</html>
