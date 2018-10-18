@@ -1,0 +1,92 @@
+<html>
+<head>
+<title> Array </title>
+<style>
+table{
+margin-left: auto;
+margin-right: auto;
+}
+table tr th{
+width: 600px;
+text-align: center;
+}
+table tr td{
+height: 100px;
+width: 600px;
+text-align: center;
+}
+#uni{
+color: red;
+}
+#dub{
+color:green;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+var vtxt1=document.getElementById("txt1");
+var arr=[];
+// Add element On array
+function unique(x){
+for(var i=0;i<=arr.length;i++){
+if(x==arr[i]){
+return false;
+}
+}
+return true;
+}
+$("#btn1").click(function(){
+if(unique($("#txt1").val)){
+arr.push($("#txt1").val);
+$("#spn1").html("  "+vtxt1.value+" is added");
+}
+else{
+$("#spn1").html("Element is present already !!");
+}
+});
+// delete element
+$("#btn2").click(function(){
+for(var i=0;i<arr.length;i++){
+if(arr[i]==vtxt1.value){
+document.getElementById("spn2").innerHTML=" element is deleted ";
+arr.splice(i,1);
+}
+}
+vtxt1.focus();
+});
+vtxt1.onfocus=function(){
+document.getElementById("spn1").innerHTML="";
+document.getElementById("spn2").innerHTML="";
+}
+// backup
+$("#btn3").click(function(){
+       
+		var jf =  JSON.stringify(arr);
+		localStorage.wskm = jf;
+});
+//  Restore
+$("#btn4").click(function(){
+      var jf=localStorage.wskm ;
+		arr=JSON.parse(jf);
+		alert(arr);
+});
+// Print 
+$("#btn5").click(function(){
+document.getElementById("spn2").innerHTML="  "+arr.join("  ");
+});
+});
+</script>
+</head>
+<body>
+<input type="text" id="txt1" /><span id="spn1"></span><span id="spn2"></span><br/><br/>
+<input type="button" value="Add" id="btn1"/>
+<input type="button" value="delete" id="btn2"/><br/><br/>
+<input type="button" value="Backup " id="btn3"/>
+<input type="button" value="Restore" id="btn4"/><br/><br/>
+<input type="button" value="Print element " id="btn5"/>
+
+
+</body>
+</html>
