@@ -11,6 +11,12 @@ table tr td{
   height: 100px;
   width: 600px;
 }
+#uni{
+color: red;
+}
+#dub{
+color:green;
+}
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -29,12 +35,42 @@ arr.push(x);
 actualArr=actualArr+x+"  ";
 }
 //print all Array Elements
-$("#btn4").click(function(){ $("#spn1").html(actualArr);});
-// print Array Elements in sorted order
-$("#btn5").click(function(){
+$("#btn4").click(function(){ 
   arr.sort();
-$("#spn2").html(arr.join("  "));
+var uniqueArray=[];
+var count=1;
+for(var i=0;i<arr.length;i++){
+if(arr[i]!=arr[i+1]){
+if(count<=1){
+uniqueArray.push(arr[i]);}count=1;
+}
+else{
+count++;
+}
+}
+var colorArr="";
+for(var j=0;j<arr.length;j++){
+if(unique(arr[j],uniqueArray)===true){
+colorArr=colorArr+" <span id='uni'>"+arr[j]+"</span>";
+}
+else {
+colorArr=colorArr+" <span id='dub'>"+arr[j]+"</span>";
+}
+}
+alert(colorArr);
+$("#spn1").html(colorArr);
+function unique(x,uniqueArray){
+for(var k=0;k<uniqueArray.length;k++){
+if(x===uniqueArray[k]){
+return true;
+}
+}
+return false;
+}
+
+
 });
+
 // print unique Elements of Array
 $("#btn1").click(function(){
   arr.sort();
@@ -90,13 +126,11 @@ if(arr[i]!=arr[i+1]){
 <body>
 <table border="1px">
 <tr>
-  <th>All Elements <input type="button" value="Click Me" id="btn4"/></th>
-  <th>All Elements In sorted order <input type="button" value="Click Me" id="btn5"/>
-</th>
+  <th colspan="2">All Elements <input type="button" value="Click Me" id="btn4"/></th>
 </tr>
 <tr>
-  <td ><span id="spn1"></span></td>
-  <td ><span id="spn2"></span></td>
+  <td colspan="2"><span id="spn1"></span></td>
+ 
 </tr>
 <tr>
   <th>Unique Elements<input type="button" value="Click Me" id="btn1" /></th>
