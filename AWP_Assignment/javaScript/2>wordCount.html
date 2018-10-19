@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>wordCount</title>
+<script type="text/javascript">
+window.onload=function(){
+var vbtn1=document.getElementById('btn1');
+vbtn1.onclick=function(){
+var string=document.getElementById("txt1").value;
+var wordsArray = string.split(" ");
+wordsArray.sort();
+var count=1;
+var finalResult="";
+for(var i=0;i<wordsArray.length;i++){
+if(wordsArray[i]==wordsArray[i+1]){
+count++;
+}else{
+finalResult = finalResult + wordsArray[i] + " " + count + "<br>";
+count=1;
+}
+}
+document.getElementById("spn1").innerHTML=finalResult;
+}
+}
+</script>
+</head>
+<body>
+<form>
+<input type="text" id="txt1" onfocus="this.value=''" />
+<input type="button" id="btn1" value="Count Words"/><br/>
+<span id="spn1"></span>
+</form>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>HTML_CSS_JS</title>
+<style>
+.np{
+color:red;
+}
+</style>
+<script>
+window.onload=function(){
+var vtxt1=document.getElementById("txt1");
+var vbtn1=document.getElementById("btn1");
+var vbtn2=document.getElementById("btn2");
+var vbtn3=document.getElementById("btn3");
+var spn1=document.getElementById("spn1");
+var vspn2=document.getElementById("spn2");
+var vdiv1=document.getElementById("div1");
+// generate random value
+function getRandomNumber(min,max){
+return Math.floor(Math.random()*(max-min))+min;
+}
+// build array
+var arr=[];
+for(var i=0;i<10;i++){
+arr.push(getRandomNumber(1,10))
+}
+// search in array
+function search(element){
+for(var i=0;i<arr.length;i++){
+if(arr[i]==element){return true;
+}
+}
+return false;
+}
+// onfocus
+vtxt1.onfocus=function(){
+vbtn1.disabled=true;
+vbtn2.disabled=true;
+vspn2.innerHTML=" ";
+}
+// onblur
+vtxt1.onblur=function(){
+if(search(vtxt1.value)){
+vbtn1.disabled=false;
+vbtn2.disabled=false;
+vdiv1.innerHTML="<input type='text' id='txt2'/>";
+}
+else{
+vspn2.innerHTML=" Entered Element Is Not In Array";
+vspn2.className="np";
+}
+}
+// modify
+vbtn1.onclick=function(){
+var vtxt2=document.getElementById("txt2").value;
+for(var i=0;i<10;i++){
+if(arr[i]==vtxt1.value){
+arr[i]=vtxt2;
+}
+}
+vdiv1.innerHTML="";
+//vtxt1.value="";
+vtxt1.focus();
+}
+// delete
+vbtn2.onclick=function(){
+for(var i=0;i<10;i++){
+if(arr[i]==vtxt1.value){
+arr.splice(i,1);
+}
+}
+vdiv1.innerHTML="";
+//vtxt1.value="";
+vtxt1.focus();
+}
+// display array
+vbtn3.onclick=function(){
+var output="";
+for(var i=0;i<arr.length;i++){
+output=output+arr[i]+" ";}
+spn1.innerHTML=output;
+}
+}
+</script>
+</head>
+<body>
+<input type="text" id="txt1" autofocus/> <span id="spn2"></span><br/><br/>
+<div id="div1"></div><br/>
+<input type="button" value="modify" id="btn1"/>
+<input type="button" value="delete" id="btn2"/>
+<input type="button" value="Display" id="btn3"/><br><br>
+<span id="spn1"></span>
+</body>
+</html>
