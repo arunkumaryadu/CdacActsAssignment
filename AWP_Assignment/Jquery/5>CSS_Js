@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>HTML_CSS_JS</title>
+<style>
+.np{
+color:red;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(function(){
+var vtxt1=document.getElementById("txt1");
+var vbtn1=document.getElementById("btn1");
+var vbtn2=document.getElementById("btn2");
+var vbtn3=document.getElementById("btn3");
+var spn1=document.getElementById("spn1");
+var vspn2=document.getElementById("spn2");
+var vdiv1=document.getElementById("div1");
+// generate random value
+function getRandomNumber(min,max){
+return Math.floor(Math.random()*(max-min))+min;
+}
+// build array
+var arr=[];
+for(var i=0;i<10;i++){
+arr.push(getRandomNumber(1,10))
+}
+$("#txt1").focus();
+// search in array
+function search(element){
+for(var i=0;i<arr.length;i++){
+if(arr[i]==element){return true;
+}
+}
+return false;
+}
+// onfocus
+
+$("#txt1").focus(function(){
+$("#btn1").prop('disabled',true);
+$("#btn2").prop('disabled',true);
+$("#spn2").html(" ");
+});
+// onblur
+$("#txt1").blur(function(){
+if(search($("#txt1").val())){
+	$("#div1").html("<input type='text' id='txt2' />");
+$("#btn1").prop('disabled',false);
+$("#btn2").prop('disabled',false);
+
+}
+else{
+$("#spn2").html(" Entered Element Is Not In Array");
+$("#spn2").addClass("np");
+}
+});
+// modify
+$("#btn1").click(function(){
+for(var i=0;i<10;i++){
+if(arr[i]==$("#txt1").val()){
+arr[i]=$("#txt2").val();
+}
+}
+$("#div1").html("");
+$("#txt1").val("");
+$("#txt1").focus();
+
+});
+// delete
+$("#btn2").click(function(){
+for(var i=0;i<10;i++){
+if(arr[i]==$("#txt1").val()){
+arr.splice(i,1);
+}
+}
+$("#div1").html("");
+$("#txt1").val("");
+$("#txt1").focus();
+});
+// display array
+$("#btn3").click(function(){
+$("#spn1").html(arr.join(" "));
+});
+});
+</script>
+</head>
+<body>
+<input type="text" id="txt1"/> <span id="spn2"></span><br/><br/>
+<div id="div1"></div><br/>
+<input type="button" value="modify" id="btn1"/>
+<input type="button" value="delete" id="btn2"/>
+<input type="button" value="Display" id="btn3"/><br><br>
+<span id="spn1"></span>
+</body>
+</html>
