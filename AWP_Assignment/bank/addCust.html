@@ -1,0 +1,45 @@
+<html>
+<title>AJAX_PHP_Jquery</title>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(function(){
+	
+	
+    $("#btn1").click(function(event){
+	        event.preventDefault();
+            request=$.ajax({
+            url: "addCust.php",
+            method: "POST",
+            data: $('form').serialize(),
+            dataType: "text"
+                          });
+
+            request.done(function( response) {
+	            	alert(response);
+            });
+
+            request.fail(function( jqXHR, textStatus ) {
+	        alert("Request failed: " + textStatus);
+            });
+    });
+
+		
+});//end of onload event function.
+</script>
+</head>
+<body>
+<form method="post">
+<input type="text"  name="accNo" id="txt1" placeholder="Enter account No" />
+<input type="text"  name="customerName" id="txt2" placeholder="Enter customer Name" /><br/>
+<input type="text"  name="fatherName" id="txt3" placeholder="Enter father name"/><br/>
+<input type="text"  name="adhar" id="txt4" placeholder="Enter adhar No" /><br/>
+<input type="text"  name="address" id="txt5" placeholder="Enter address"/><br/>
+<input type="text"  name="city" id="txt6" placeholder="Enter city"/><br/>
+<input type="text"  name="pin" id="txt7" placeholder="Enter pin"/><br/>
+<input type="text"  name="contact" id="txt8" placeholder="Enter Mobile Number" /><br/>
+<input type="text"  name="amount" id="txt9" placeholder="Enter amount"/><br/>
+<input type="submit" value="Save" id="btn1"/><span>
+</form>
+</body>
+</html>
