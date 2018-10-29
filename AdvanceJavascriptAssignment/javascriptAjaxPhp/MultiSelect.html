@@ -1,0 +1,38 @@
+<html>
+<title>AJAX_PHP</title>
+<head>
+<script>
+window.onload=function()
+{
+	var a;
+	document.getElementById("t1").onblur=function()
+	{
+	var ssn ="MultiSelect.php?category="+document.getElementById("t1").value;
+	a = new XMLHttpRequest();
+	a.onreadystatechange=afterServercompletedTheJob;
+
+	a.open("GET", ssn, true);
+	a.send();//call to theserver.
+	}
+
+	function afterServercompletedTheJob()
+		{
+		if(this.readyState==4 && this.status == 200) // server completed  //the job
+		{
+         document.getElementById("content").innerHTML=this.responseText;
+		}
+	}
+}//end of onload event function.
+</script>
+</head>
+
+
+<style>
+</style>
+<body>
+<input type="text"  name="category" id="t1" placeholder="Please enter category or cars"/> <span id="em"> </span>
+<div id="content">
+
+</div>
+</body>
+</html>
