@@ -1,0 +1,71 @@
+<html>
+   <head>
+      <title>Exam</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <script>
+$(function(){
+  function displayEmployee (){
+		request=$.ajax({
+            url: "/display_employee",
+            method: "GET",
+            dataType: "json"
+		});
+        request.done(function( response ){
+		            var res="<table border='2'><th>id</th><th>employee_name</th><th>employee_salary</th><th> employee_age</th>";
+					for(var i=0;i<response.length;i++){
+					res=res+"<tr><td>"+response[i].id+"</td><td>"+response[i].name+"</td><td>"+response[i].course+"</td><td>"+response[i].age+"</td></tr>";
+					}
+					res=res+"</table>";
+					$("#emp_list").html(res);
+					console.log(response);
+        });
+        request.fail(function( jqXHR, textStatus ) {
+			$("#emp_list").html(textStatus);
+        });
+
+	}
+displayEmployee ();
+
+
+$("#btn1").click(function(){
+         id=$("#txt1").val();
+		 param={"id":id};
+		request=$.ajax({
+            url: "/remove",
+			      data:param,
+            method: "GET",
+            dataType: "json"
+		});
+        request.done(function( response ){
+                displayEmployee ();
+                if(JSON.parse(response).status==1){
+                  $("#spn1").html("Record seccessfully removed!!!");
+                }else{
+                  $("#spn1").html("Student id not found !!");
+                }
+
+
+        });
+        request.fail(function( jqXHR, textStatus ) {
+			$("#spn1").html(textStatus);
+        });
+
+	});
+  $("#txt1").focus(function(){
+    $("#spn1").html("");
+    $("#txt1").val('');
+  });
+
+
+});
+</script>
+   </head>
+   <body>
+     <h4 id="emp_list"></h4>
+	 <form>
+	 <input type="text" id="txt1" name="txt1"/>
+	 <input type="button" id="btn1" value="Remove"/>
+	 </form>
+	 <span id="spn1"></span>
+   </body>
+</html>
