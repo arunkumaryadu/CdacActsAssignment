@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>EXAM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script>
+        var app = angular.module("app",[]);
+        app.controller("employeeController", function ($scope,$http) {
+            function getEmployee() {
+                $http.get("/display_employee").then(function (response) {
+                    console.log("list responce");
+                    $scope.listOfEmployee = response.data;
+                });
+            }
+
+            getEmployee();
+            $scope.remove = function () {
+                $scope.message = "";
+                $http.get("/remove",{params:{id:$scope.empno}}).then(function (res) {
+                    console.log("response remove");
+                    $scope.message = res.data.msg;
+                });
+                getEmployee();
+            }
+        })
+    </script>
+</head>
+<body ng-app="app">
+    <div ng-controller="employeeController">
+        <h1>This is node js example</h1>
+        <!-- {{listOfEmployee}} -->
+        <div ng-if='listOfEmployee'>
+            <table border="1">
+                <tr>
+                    <th>Employee name</th>
+                    <th>Employee no</th>
+                    <th>Deptid</th>
+					<th>Deptname</th>
+                </tr>
+                <tr ng-repeat = 'emp in listOfEmployee'>
+                    <td>{{emp.id}}</td>
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.course}}</td>
+				          	<td>{{emp.age}}</td>
+                </tr>
+            </table>
+
+
+        </div>
+        <br><br>Employee no<input type="text" ng-model="empno"> <button ng-click="remove()">Remove</button>
+        {{message}}
+    </div>
+</body>
+</html>
