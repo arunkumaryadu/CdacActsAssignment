@@ -1,0 +1,78 @@
+<html>
+   <head>
+      <title>Exam</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <script>
+$(function(){
+
+  $("#txt1").blur(function(){
+		 id=$("#txt1").val();
+		 param={"id":id};
+		request=$.ajax({
+            url: "/display_employee_details",
+            method: "GET",
+		      	data:param,
+            dataType: "json"
+		});
+        request.done(function( response ){
+					if(response.length>0){
+					$("#txt2").val(response[0].name);
+					$("#txt3").val(response[0].course);
+					$("#txt4").val(response[0].age);
+					}
+					else{
+					$("#spn1").html("Please Enter Correct Id Number");
+					$("#txt2").val('');
+					$("#txt3").val('');
+					$("#txt4").val('');
+					}
+
+        });
+        request.fail(function( jqXHR, textStatus ) {
+			$("#spn1").html(textStatus);
+        });
+	});
+
+$("#btn1").click(function(){
+         id=$("#txt1").val();
+		     name=$("#txt2").val();
+		     course=$("#txt3").val();
+		     age=$("#txt4").val();
+	    	 param={"id":id,"name":name,"course":course,"age":age};
+	       request=$.ajax({
+               url: "/update_employee_details",
+			         data:param,
+               method: "GET",
+               dataType: "json"
+	      	});
+         request.done(function( response ){
+			       	$("#spn2").html(response.status);
+          });
+        request.fail(function( jqXHR, textStatus ) {
+		        	$("#spn2").html(textStatus);
+          });
+	});
+
+  $("#txt1").focus(function(){
+        $("#spn1").html("");
+	      $("#spn2").html("");
+        $("#txt1").val('');
+       	$("#txt2").val('');
+       	$("#txt3").val('');
+       	$("#txt4").val('');
+  });
+});
+</script>
+   </head>
+   <body>
+     <h4 id="emp_list"></h4>
+	 <form>
+	 <input type="text" id="txt1" name="txt1" placeholder="Please Enter id here"/> <span id="spn1"></span><br/><br/>
+	 <input type="text" id="txt2" name="txt2"/><br/><br/>
+	 <input type="text" id="txt3" name="txt3"/><br/><br/>
+	 <input type="text" id="txt4" name="txt4"/><br/><br/>
+	 <input type="button" id="btn1" value="Update"/>
+	 </form>
+	 <span id="spn2"></span>
+   </body>
+</html>
