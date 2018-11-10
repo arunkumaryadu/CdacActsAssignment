@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sample page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script>
+        var app = angular.module("app",[]);
+        app.controller("employeeController", function ($scope,$http) {
+         $scope.btnUpdate = true;
+
+            $scope.catchme = function () {
+                $scope.message = "";
+                $http.get("/display_employee_details",{
+					             params:{id:$scope.txt1}
+				                }).then(function (res) {
+                      if(res.data.length>0){
+                       $scope.txt2=res.data[0].name;
+				               $scope.txt3=res.data[0].course;
+				               $scope.txt4=res.data[0].age;
+                       $scope.btnUpdate = false;
+
+                     }	else{
+                      $scope.message = "Please Enter Correct Id Number";
+                      $scope.txt2='';
+                      $scope.txt3='';
+                      $scope.txt4='';
+             					}
+
+                });
+            }
+			$scope.update = function(){
+			$http.get("/update_employee_details",{params:{id:$scope.txt1,name:$scope.txt2,course:$scope.txt3,age:$scope.txt4}
+					}).then(function (res){
+					console.log("update");
+					});
+		}
+    $scope.clear = function(){
+      $scope.btnUpdate = true;
+      $scope.txt2='';
+      $scope.txt3='';
+      $scope.txt4='';
+  }
+		});
+
+    </script>
+</head>
+<body ng-app="app">
+    <div ng-controller="employeeController">
+   <input type="text" id="txt1" ng-model="txt1"  placeholder="Please Enter id here" ng-blur="catchme()" ng-focus='clear()'/> <span id="spn1"></span><br/><br/>
+	 <input type="text" id="txt2" ng-model="txt2" /><br/><br/>
+	 <input type="text" id="txt3" ng-model="txt3"/><br/><br/>
+	 <input type="text" id="txt4" ng-model="txt4"/><br/><br/>
+	 <input type="button" id="btn1" ng-disabled="btnUpdate" value="Update" ng-click="update()"/>
+        {{message}}
+    </div>
+</body>
+</html>
