@@ -1,0 +1,376 @@
+
+advanced java.
+1. most of people it means the following.
+1. knowing power of reflection.
+2. using frameworks.
+3. knowing architectures 
+
+	1. jee -- standard
+	2. spring framework  -- product
+	3. hibernate.  -- product
+
+how we plan to approach.
+1. we will learn spring framework.
+coming sunday evening.
+spring framework is very good example
+of good design. 2003,  2014
+
+
+2. hibernate is better option to deal
+with database when compared to jdbc.
+hibernate is only a dao stuff.
+
+3. jee   -- standard thru whcih we can
+build java based enterprise applications.
+
+jee is 1997 stuff, the reason why java
+is so powerful in the enterprise world.
+
+how do you take some body english and know whether is correct information
+or wrong information.
+
+
+difference between core java and
+advanced java.
+in core java you write main
+in advaned java you cannot write main.
+
+
+spring (3/5)
+hibernate (2.5/5)
+jee (2/5)
+
+tool usage
+maven
+log4j
+git.
+jenkins
+
+
+
+jee
+enterprise applciation
+1. large number of usres
+2. security needs.
+3 variety of clients
+4. legacy issues. -- old software.
+...
+
+jee advantage.
+1. generic things are taken care by
+a software called container.
+2. programmer will cook things
+whcih are specific to his project.
+3. 1 +2 is what the client will see.
+
+any jee platform will be component based.
+there are various components which we choose depends on need.
+
+transport system.
+cycle, bullock cart, car, bike ... crane. boat, ship...
+
+
+servlets jsp
+ejb
+jms
+jca
+
+which one you want to pick you have to decide.
+
+when too much of infomration, stick
+with basics.
+
+what is spring?
+1. it makes applciations loosely coupled
+2. anythign with spring , that anything
+will become easier.
+X+ spring = X becomes easier.
+
+
+drawback of spring, it is a product.
+spring is free, hopefuly it will be free.
+
+once upon a time java was free, now it is not free, becuse drug business.
+
+loosely coupled word meaning.
+some kids wants to electronic kits
+now the kid should not ask for soldering rod. in case the kid kid will burn himself.
+
+
+
+bread board  -- spring software breadboard.
+you can plug and play anything provided
+you know interface.
+
+
+
+
+
+Torch , bulb and battery.
+
+spring framework.
+Torch and buld i want tight coupling
+Battery and Torch loose coupling.
+
+in which layer spring is used.
+answer is in all layers, I hate this.
+ok spring can be used in service layer
+and dao layer.
+
+
+
+
+should I use nodejs or Spring , great question usually nodejs and spring bad
+options.
+
+
+
+
+
+
+I want to work on advanced java things
+what all things should I know.
+
+1. somethings are coded.
+2. somethings are configured
+3. you need libraries   -- add libraries
+by ourselves for thre edays till sunday.
+on monday we will go for maven.
+
+
+maven is a tool which helps you in
+getting the libraries,assembling code, compiling code and deploying code.
+
+
+
+tools known -- maven, log4j,junit, git,jenkins.
+
+spring framework.
+
+many a times framework will use
+configuration files.
+these configuration files has to be
+put in the classpath. best to ensrue
+something is in the classpath while
+working in eccclipse is copy the configuration file in the src folder.
+in the src folder and not inside some folder of src.
+
+
+
+
+
+
+
+
+
+
+1. what is first thing i should do while
+working on spring.
+
+1. copy some jar files into our project
+so that can jvm can locate it.
+put your jar files in the CLASSPATH.
+
+jar files should be there, but we doing
+project --properites add jar file pathetic approach but currently great
+appraoch.
+xml file is called as configuration file.
+
+
+
+
+
+
+1. copyied the jar files addthat
+into the project.
+2. configuration src folder.
+gurantee there in my classpath.
+
+
+
+
+
+java bean.
+what is java bean
+normal java class with setter and getter.
+i will show creating vity on setter
+and getter ok it is no longer a bean
+
+when does it know whrether it use intel
+or amd. it wont know
+we should know
+.
+
+
+
+
+
+
+
+
+
+i should have two clases, A or B.
+but  both of them should have a function
+called f1, this english can be done
+only if you design an interface with
+f1 and ensure A and B implement it.
+
+
+
+Car and wheels
+Cabinet and processor
+
+
+whole  -- Cabinet.
+Processor -- interface.
+
+
+
+
+
+is spring wired object and domain
+object the same  thing?
+
+what do you mean domain object.
+that object that is common for all layers
+
+spring object.
+object created by spring.
+
+
+who tells spring which object to create.
+
+
+
+
+
+
+
+you have some classes with you.
+you decide which objects you
+will create, which objects spring
+will create.
+then you decide what you will wire
+what spring will wire.
+and then finally in the code, pickup
+the spring wired object  becuase that
+is reason why we used spring.
+
+spring gives loose couplilng but talented programmer can write tight
+couplilng with spring also. that is skill
+we cant compete.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Mobile has sim.
+sim have two implementations Airtel
+and BSNL
+Mobile has a function sendSMS
+
+wiring of airtel sim or bsnl sim should
+be done by spring into the Mobile.
+
+mobileobject.sendSMS
+send sms using bsnl/airtel sim.
+
+
+
+
+
+
+
+does thre tier have association.
+Prsentation has a SErvice
+SErvice hsa a dao
+DAO has a database.
+
+
+people who become afan of loose coupling
+will be in hell. 
+
+
+
+again the most popular virus will
+attack us.
+most popular virus == inability to getinto details.
+
+
+
+
+
+
+
+
+Presentation
+non static variable of type  Service.
+
+startApp
+{
+
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
