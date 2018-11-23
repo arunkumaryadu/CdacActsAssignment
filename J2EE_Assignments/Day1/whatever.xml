@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	
+	
+	<!-- Test bulb example -->
+	<bean id="b1" class="First_Bulb.Rechargeable">
+		<property name="mah" value="2500"/>
+	</bean>
+	<bean id="t1" class="First_Bulb.Torch">
+		<property name="battery" ref="b1"></property>
+	</bean>
+	
+	<bean id="t2" class="First_Bulb.Torch">
+		<property name="battery" ref="b2"></property>
+	</bean>
+	
+		<bean id="b2" class="First_Bulb.Alkaline">
+		<property name="mah" value="2500"/>
+	</bean>
+	
+	
+	<!-- Cabinate Example  -->
+	
+	<bean id="b5" class="Second_cabinate.Cabinet">
+	<property name="x" ref="b4"></property>
+	</bean>
+
+
+	<bean id="b3" class="Second_cabinate.Intel">
+		<property name="scrap" value="23"></property>
+		<property name="junk" value="intel i11"></property>
+	</bean>
+	
+
+	<bean id="b4" class="Second_cabinate.AMD">
+		<property name="scrap" value="24"></property>
+		<property name="junk" value="amd i9"></property>
+	</bean>
+	
+
+<!-- Layers -->
+	 
+      <bean id="dobj" class="Third_ayer.DAOLayer"/>
+	
+		<bean id="sobj" class="Third_ayer.ServiceImplemnetation">
+		 <property name="d" ref="dobj"/>
+		</bean>
+	
+		<bean id="pobj" class="Third_ayer.Presentation">
+		 <property name="s" ref="sobj"/>
+		</bean>
+	
+	
+	<!-- Sim Mobile Assignment -->	
+	
+	<bean id="mobile1" class="Fourth_Mobile_Sim.Mobile">
+	<property name="Sim" ref="airtelSim1"></property>
+	</bean>
+
+
+	<bean id="airtelSim1" class="Fourth_Mobile_Sim.Airtel">
+		<property name="Name" value="Airtel"></property>
+	</bean>
+	
+
+	<bean id="bsnlSim1" class="Fourth_Mobile_Sim.BSNL">
+		<property name="Name" value="BSNL"></property>		
+	</bean>
+	
+
+<!-- Photo Frame Assignment -->	
+	
+	<bean id="pf1" class="PhotoFrame.Frame">
+	<property name="PicType" ref="s1"></property>
+	</bean>
+
+
+	<bean id="f1" class="PhotoFrame.Funny">
+		<property name="Name" value="Funny"></property>
+	</bean>
+	
+
+	<bean id="s1" class="PhotoFrame.Scarry">
+		<property name="Name" value="Scarry"></property>		
+	</bean>
+	
+
+
+
+
+	
+</beans>
