@@ -1,0 +1,276 @@
+we can tell spring create objects
+via configuration, and spring is able
+to create these objects by using
+reflection.
+java beans -- java class setters and 
+getters with the proper naming conventions. when we do it, spring again
+calls these setters and getters via
+reflection.
+
+along with technology we should learn
+the nuances of the tool in whcih we build the technology, 
+
+
+
+spring -- dependancy injection.
+what spring believes in dependancy
+and as a programmer most of time
+given our logic we convert 
+dependancy into a form of aggregation.
+
+Inversion of control.
+
+
+1. loosely coupled
+2. existing becomes easier.
+
+
+spring in such a way I should not understand
+1. dependancy injection
+2. ioc.
+
+
+
+
+
+
+
+Annotations.
+just one way of design and most of times
+this looks attractive hence we use
+it frequently.
+
+
+xml is great technologythat is lot of places it is used. even in spring also
+but usually the way we prefer to wire
+objects in Spring is by using a mechnaism called annotations this is supposed to be simpler and choice is
+subjective.
+
+Annotation.
+there will be two people X and Y.
+X will create the annotation.
+
+Y will use the annotation, becuase there
+is  some benefit that comes to Y
+becuase of using the annotation.
+
+the benefit will come only under some
+circumstance which is controlled by X.
+
+
+
+
+@Component
+we are telling hey look this is a whole.
+
+@Autowired
+x obj;
+we are telling spring hey look you may
+have an object of type x, wire it here.
+
+	@Bean
+hey look object creation i will do it
+you remember you have this object
+with you.
+
+@ComponentScan("annot.basics")
+this is annotation thru which we tell
+spring hey look there is a pakcage
+called annot.basics, in this package
+you will find classes which will use
+@component annotation.
+
+
+
+
+we used annotations in the morning.
+
+
+
+
+
+
+
+
+
+
+
+
+
+A  --
+	
+at the function level @Bean
+at the class level you need to use
+@componentScan("package of where you used the annotation @component");
+there is place where you want to make
+parts.
+
+
+
+
+
+
+
+spring project.
+1. xml with no annotations (yesterday)
+
+today 
+we dont need xml and we started using
+annoations.
+we used annotations on the class
+and on the function or variables.
+@component
+class X
+
+@autowired
+private Sim s
+
+@Bean
+public Sim s
+{
+}
+
+general approach towards annotation is
+the following
+
+we want to use annotion called X.
+100% sure we have not written this annotation we are only using it.
+
+we should know the benefit of using
+the annotation and when does it come.
+you cant predict, you have to look
+documentation and find out.
+
+when we dont know the benefit we should
+not use the annotation.
+
+when we use annotation on function on
+class or on variable,
+
+ it is understood
+we are not controlling the scneario .
+somebody else is, that somebody else is
+doing reflection on the annotations we
+used and giving us the benefit.
+
+
+
+
+
+
+
+
+public void f1()
+{
+
+}
+
+
+
+
+
+
+
+
+
+factory
+observer
+proxy
+Strategy
+Template.
+
+
+
+1. with xml and no annotations
+2. only annotations
+
+
+
+
+
+
+3. xml and annotations.
+
+List<Transactions> t = fromDAO
+create a Transaction class object.
+1. accno
+2. status
+3. amt
+4. date
+4 rows from the table.
+for each row you should create an object.
+and put that into the list.
+and then return. the list to the serivce
+layer.
+that is reason node js is there.
+
+
+anonymous class
+what is name of the class?
+we dont know.
+how do you create the object of the clas which we dont know, we do this by
+creating an anonymous class.
+
+
+
+
+
+sp  -- meet everyone in the world 
+and tell them what you underand and
+all of them should write according
+to what you understand.
+
+
+
+
+Thread t =new Thread(new Runnable() {
+			
+			public void run()
+			{
+				System.out.println("hi");
+			}
+			
+			
+		});
+		t.start();
+
+
+
+
+
+
+
+
+we have a class called X where
+we need to do jdbc.
+
+1. get the JDBcTEmplate object or its cousins...
+
+2. ensure jdbc related driver file
+is present in your system.
+
+3. There is a concept called DAtasource
+because creation of Connection is expensive we want to pick one fromthe pool.
+
+we create a Datasource object.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
