@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+
+
+<bean id="ds" destroy-method="close" class=
+	"org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost/atmcasestudy"/>
+        <!--  change mydb to database name  -->
+        <property name="username" value="root"/>
+        <property name="password" value="cdacacts"/>
+    </bean>
+       
+    
+    <bean id="xyz" class="org.springframework.jdbc.core.JdbcTemplate">
+    <property name="dataSource" ref="ds"/>
+    </bean>
+    
+    
+    <bean id="abc" class="JdbcWithSpring.EmpDAO">
+    <property name="jtemp"  ref="xyz"/>
+    </bean>
+    
+   
+		<bean id="sobj" class="JdbcWithSpring.EmpServiceLayer">
+		 <property name="Doaobj" ref="abc"/>
+		</bean> <!--
+	
+		<bean id="pobj" class="may.real.Presentation">
+		 <property name="s" ref="sobj"/> 
+		</bean>-->
+	
+	
+	
+    
+    
+    
+
+<!-- 
+
+
+<bean id="abc" class="jdbc.spring.Test">
+    <property name="t"  ref="xyz"/>
+    </bean>
+
+<bean id="dobj" class="may.real.C"/>
+
+
+
+<bean id="sobj" class="may.real.A">
+		 <property name="whocares" ref="dobj"/>
+		</bean>
+	
+	 -->
+	 
+	
+
+
+<!-- 
+	<bean id="dobj" class="may.real.DAOLayer"/>
+	
+		<bean id="sobj" class="may.real.ServiceImplemnetation">
+		 <property name="d" ref="dobj"/>
+		</bean>
+	
+		<bean id="pobj" class="may.real.Presentation">
+		 <property name="s" ref="sobj"/>
+		</bean>
+	
+	
+	
+	 -->
+	
+	
+
+
+
+<!-- 
+
+	<bean id="b5" class="basic.example.Cabinet">
+	<property name="x" ref="b4"></property>
+	</bean>
+
+
+	<bean id="b3" class="basic.example.IntelReally">
+		<property name="scrap" value="23"></property>
+		<property name="junk" value="intel i11"></property>
+	</bean>
+	
+
+	<bean id="b4" class="basic.example.AMD">
+		<property name="scrap" value="24"></property>
+		<property name="junk" value="amd i9"></property>
+	</bean>
+	
+
+ -->
+
+
+
+
+<!--
+	<bean id="b1" class="basic.example.Rechargeable">
+		<property name="mah" value="2500"/>
+	</bean>
+	
+		
+	
+	<bean id="t1" class="basic.example.Torch">
+		<property name="battery" ref="b1"></property>
+	</bean>
+	
+	<bean id="t2" class="basic.example.Torch">
+		<property name="battery" ref="b1"></property>
+	</bean>
+	
+	
+	
+	
+			 
+	<bean id="b2" class="basic.example.Alkaline">
+		<property name="mah" value="2500"/>
+	</bean>
+	
+	<bean id="t2" class="basic.example.Torch">
+		<property name="battery" ref="b2"></property>
+	</bean>
+	
+	 -->
+	
+	
+</beans>
