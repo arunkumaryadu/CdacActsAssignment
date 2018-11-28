@@ -1,0 +1,311 @@
+1. summarize annoations with respect to what we covered in spring.
+2. jee web applications.
+3. junit -- this is another example of annotation usage.
+
+anotations 
+1. someobdy creates and promises a benefit under some circumstance.
+2. somebody is using it.
+3. person who uses the annotation is not person who provides the benefit.
+
+
+
+Photo and PhotoFrame
+
+wire   a Photo into a PHotoframe.
+
+
+@componentScan( and tell it the name of package where photoframe is presnet)
+1. Photo by yourself or you want Photo to be created by spring.
+Photo will created by us and spring shoudl use it, then we need @Bean.
+
+
+
+
+
+where you want the Photo, answer PhotoFrame
+@Component
+
+
+main program where you will tell spring hey look you ahve photoframe
+and photoframe would have been autowired with the help of a photo
+give me the Photoframe
+
+
+
+we have to use the following annoations
+
+step1 in spring in annotations
+@componentScan
+@Conponent
+@autowired.
+@bean is required only if you are creating the object hey use it.
+@respository
+@service
+
+how to use annotations.
+1. you take spring example and tell when we use annoations
+spring will take our class, see whether we used annoations, seeing
+whther we used annotations is called as Reflection.
+ and then depending on anotation we used spring will cook some benefit
+which it promised.
+
+spring is telling you tell me how to take one row and convert that into an
+object of your choice, then I will each row i get from the query
+and get the object converted based on the logic you said and give you
+a list.
+
+I used jdbc in my dao layer , funeral, jdbc is dead in 2001.
+I am still using ok,
+
+replacement for jdbc, ORM.
+jdbc is very crude way, ORM is much refined way of doing things .
+what is common to JDBc and orm.
+both are used in dao layer.
+
+ORM is a standard, HIbernate is a product.
+
+
+
+
+queston somebody tells tell me whre all did you use annotations
+
+we wired service layer and dao layer in spring by using annoations.
+we tested
+
+we have to know how to unit testing of service layer.
+
+
+
+
+
+
+
+we have to prove do we know ListDatastructure.
+
+1. add.
+2. search
+3. sort
+
+
+
+
+
+
+
+
+
+
+where are we in advanced java
+1.spring.
+	lc, mte
+2. Junit
+    look we have decency of testing servcie layers	
+3. web applciations
+	
+4. hibernate
+5. web services.
+
+
+
+
+
+
+assertEquals("did not get 2", 2,size);
+message is what to show when condition is false.
+second argument is what did you expect
+and third argument what did you get.
+
+we have a serivce layer
+service layer has got a set of functions.
+these functions should return somethings based on inputs given.
+how do you know whether these functions are doing whatever we have
+asked them to do. 
+to do this we write junit test cases.
+
+Write a class.
+write function
+on the function use the annotation called @Test
+inside the function , call the service layer functions and thru an assert
+check whether the expected result and actual result are same or not.
+then run the class as junit test
+you willknow how many tests have failed or how many tests have passed.
+
+
+
+
+Web applications in java.
+web applciations in java. 
+server sdie and client side.
+
+we are not working on spring, we are working on jee.
+
+
+
+
+
+when you want to work on any web applcations.
+1. simple html page should get shown via http protocol.
+
+
+
+in java to use web applciation we need a container , container
+is a standard which implemetns jee specifications.
+we are going to use tomcat.
+what is tomcat , tomcat is a servlet,jsp container ( web container for java
+web applciations), I hate tomcat ok,there are other servers jetty.
+
+how to work on java web applciations.
+1. when you working on java web applications. or any jee applciation
+there is a particular folder structure which is expected and we should adher
+to it. if we dont adher to it , the applictionswont work.
+for example.
+
+web applciations.
+	folder
+	    WEB-INF
+		lib
+		classes
+		web.xml
+lib is small letters, let us make WEB-INF in small letters, entertainment will come.
+- we will use _ entertainment will come.
+
+show patience to make hello world work.
+
+
+
+I want to build java web application in ecclipse 
+1. which java web container you plan to use tomcat.
+where is tomcat, slides folder.
+we have tomcat present in
+
+F:\tomcat\apache-tomcat-9.0.2
+how do i know that this folder, inside this folder, we see a folder called bin and conf..
+
+
+
+how to create a web project in ecclipse, since bc period people have creating.
+
+window -- open perspective -- jee perspective.
+
+
+
+
+
+java is from oracle
+ecclipse is from x
+tomcat is from y
+and we have make all of them work together.
+
+springtoolsuite.  -- super big software for our need and it can make things
+terribly slow. so not touch this.
+
+
+
+how to work on spring with jdbc. code part using xml.
+
+1. build a poc on spring jdbc how
+show a  menu as follows
+
+1. view account
+2. view all accounts
+3. view accounts greater than balance.
+0. exit.
+
+view account, ask for accountno and then show that account detai,ls
+view all accounts, show all account details.
+take balance and show all accounts greater than balance.
+exit should exit.
+
+Database with spring works becuase we got mysql working.
+
+
+
+
+
+
+
+
+I want to work on jdbc poc.
+
+1. in xml file, ensure datasource and jdbctemplate objects are created and
+jdbc template object is wired with datasource.
+
+2. copy the xml file content and paste in your xml file content.
+
+3. in our dao code, create a  jdbctemplate object as a non static variable
+and create setters function.
+
+
+
+
+two rules about stupid design.
+1. stupid ness requires team effort ( SQLException )
+2. once you know something is stupid, in case it is popular it is no longer stupid.(SQLException)
+
+
+
+
+when is MapRow getting called.
+
+we have used some query function on JDBCTemplate object.
+it gets a ResultSet.ResultSet is a set of columns and rows.
+what the query function, in case we have supplied it with a RowMapper
+query function,  will take each row from the REsultSet and call rowMapper object
+and return object or put that into a List depending on which query function you
+used.
+
+queryForObject(sql,inputparameters,RowMapper)  -- Object
+query((sql,inputparameters,RowMapper)) -- List
+
+
+RowMapper is used only during select commands to map rows you get into an object.
+
+
+
+
+
+
+
+
+
+
+
+
+
+web applciation
+1. use the java enterprise edition version of ecclipse.
+
+there is option called dynamic web project. you have to use that option
+in normal project we had in core java that wont work for you
+in web applications as of now.
+
+when you create a dynamic web projct ecclipse will ask you hwere is
+tomcat location. you have to point out to tomcat location.
+
+
+what is number one thing you need
+if you want to use annotation?
+the source code should be yours.
+
+
+
+WEB-INF
+IF YOU KEEP SOMETHING INSIDE THIS
+FOLDER END USER WILL NEVER BE ABLE
+TO ACCESS THE CONTENTS OF THIS FOLDER.
+PROGRAMMER CAN.
+
+LOGIN.HTML  -- OUTSIDE WEB-INF
+POSTLOGIN.HTML  --KEEP THIS INSDIE
+WEB-INF
+
+jee applications , classpath is decided
+by the standard and not by us, hence we should jar files in the correct place
+after knowing theory about the jee
+product.
+
+in web applciations 
+	web-inf
+	folder called lib
+	all the jar files which is required for web applcition should be 
+put inside the lib folder only.
