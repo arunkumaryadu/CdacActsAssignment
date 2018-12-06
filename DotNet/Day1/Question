@@ -1,0 +1,15 @@
+Assignment - 1
+1. Read a number from console and print all prime numbers up to that number.
+2. Read an integer from the console.
+Find the lowest and highest divisible of a number.
+e.g  3 is lowest divisible number for 9
+e.g  7 is highest divisible number for 14
+3.    Write a program to calculate simple interest. Read P,T.R from console.
+              I = (Principle * Time * Rate of interest )/ 100
+4. Create a class Student {roolno, name, course} Write print method. Write constructors.
+5. Write a method to check number is prime number or not. Return true if number is    prime numbr, else return false.
+6. Read Integer n from console. Print sum of odd numbers, sum of even numbers, sum of prime numbers up to n.
+7. Create an array of integers. Write metthod to sort the array and print the result.
+8. Create a jagged array and print.
+    
+
