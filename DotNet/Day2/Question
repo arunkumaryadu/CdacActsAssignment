@@ -1,0 +1,18 @@
+Assignment - 2
+1. Team-A and Team-B are working under SalesProject. Create SalesProject namespace.Team-A and TeamB namespace in SalesProject. Create classes with same name in both namespace and use namespace aliasing to call the methods in both namespaces.
+2. Write a static class with following methods.
+	Get Absolute value of a number;
+	Check whether the number is prime
+	Reverse integer (for eg. Input = 198 output = 891)
+	Get the fractional part of decimal number
+3. Write a method with array of int as method parameter and calculate square of each element of the array and return. Print input array and output array.
+4. Read a number from the console. Pass it to a function. Find the square and cube of the number and return square and cube of the number. Use out parameters.
+5. Create a Student class [roolno, name, marks]. Create array of students. And print the details.
+6. Create a class Customer [ custid, custname, contact] with private members. Write properties to access the private members  and print Customer details.
+8. Write a static method to find the number of words in a string.
+9. Write extension method to find reciprocal, absolute value
+
+
+
+
+
