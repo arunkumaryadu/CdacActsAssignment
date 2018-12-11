@@ -1,0 +1,10 @@
+D:\DAC47\Arun19\DotNetFramework\Day_5_Form\Day_5_Form\bin\Debug\Day_5_Form.exe.config
+D:\DAC47\Arun19\DotNetFramework\Day_5_Form\Day_5_Form\bin\Debug\Day_5_Form.exe
+D:\DAC47\Arun19\DotNetFramework\Day_5_Form\Day_5_Form\bin\Debug\Day_5_Form.pdb
+D:\DAC47\Arun19\DotNetFramework\Day_5_Form\Day_5_Form\obj\Debug\Day_5_Form.csprojResolveAssemblyReference.cache
+D:\DAC47\Arun19\DotNetFramework\Day_5_Form\Day_5_Form\obj\Debug\Day_5_Form.Form1.resources
+D:\DAC47\Arun19\DotNetFramework\Day_5_Form\Day_5_Form\obj\Debug\Day_5_Form.Properties.Resources.resources
+D:\DAC47\Arun19\DotNetFramework\Day_5_Form\Day_5_Form\obj\Debug\Day_5_Form.csproj.GenerateResource.Cache
+D:\DAC47\Arun19\DotNetFramework\Day_5_Form\Day_5_Form\obj\Debug\Day_5_Form.exe
+D:\DAC47\Arun19\DotNetFramework\Day_5_Form\Day_5_Form\obj\Debug\Day_5_Form.pdb
+D:\DAC47\Arun19\DotNetFramework\Day_5_Form\Day_5_Form\obj\Debug\Day_5_Form.Form2.resources
