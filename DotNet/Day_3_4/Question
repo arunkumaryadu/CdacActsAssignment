@@ -1,0 +1,17 @@
+Assignment – 3
+1.	Create a class Student {int roolno, string name, double marks}. Write properties for roolno, name,  marks. Write method to calculate average score. Use reflection to print property details, Constructor, Fields, method details and also parameters etc.
+2.	Write a method to find number of words in string. Method should return number of words. Write delegate to access this function. Write anonymous method and lambda expressions also.
+3.	Use Func<> delegate to calculate simple interest. Calculate P,T,R from the console. Use TryParse to validate inputs.
+4.	Create a class library. Library should contain functions to fine
+1.	Get absolute value
+2.	Get Factorial
+3.	Check whether number is prime
+4.	Check integer is odd or even.
+Use the class library in console application.
+5.	Create enum Color. Create Fruit class {name, fruit_color}. Use enum to set fruit_color. Create array of fruit class objects and print details.
+6.	CreateAppDomain and execute other assembly
+7.	Create Abstract class having abstract method, indexer, properties and also field. Inherit this abstract class in derived class and override the members of abstract class.
+8.	Create a class Customer with auto implemented properties- id, name, address. Writ a method to print id, name, address. Create array of Customer class and print details.
+9.	Create 2 namespaces containing classes with same class name and method name. Use namespace aliasing to call the methods.
+10.	Create a class ThreeDim{int x, int y, int z}. Use operator overloading to overload operators + -,  ++, <.
+
